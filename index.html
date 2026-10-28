@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2RC2C2B Leaderboard</title>
+  <meta name="description" content="Leaderboard for the 2 Rubik's Cubes, 2 Cigs, 2 Beers speedrun.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <h1 id="site-name">Leaderboard</h1>
+      <p id="tagline" class="tagline"></p>
+      <button id="open-submit" class="btn btn-primary" type="button">Submit a run</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div id="tabs" class="tabs" role="tablist" aria-label="Categories"></div>
+
+    <div class="toolbar">
+      <label class="check">
+        <input type="checkbox" id="best-only" checked>
+        Show only the best run per runner
+      </label>
+      <span id="count" class="muted"></span>
+    </div>
+
+    <div class="table-wrap">
+      <table id="board">
+        <thead>
+          <tr>
+            <th class="col-rank">#</th>
+            <th>Runner</th>
+            <th>Time</th>
+            <th class="col-date">Date</th>
+            <th>Proof</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p id="empty" class="empty" hidden>No verified runs in this category yet. Be the first!</p>
+    </div>
+
+    <section class="rules">
+      <h2>Rules</h2>
+      <ul id="rules"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p id="safety"></p>
+    </div>
+  </footer>
+
+  <dialog id="submit-dialog">
+    <form id="submit-form" novalidate>
+      <h2>Submit a run</h2>
+      <p class="muted small">
+        Upload your video to YouTube (unlisted is fine) and paste the link below.
+        Every run is checked by hand before it appears on the leaderboard.
+      </p>
+
+      <label>Runner name
+        <input name="name" type="text" required maxlength="40" autocomplete="nickname">
+      </label>
+
+      <label>Category
+        <select name="category" id="category-select" required></select>
+      </label>
+
+      <div class="row">
+        <label>Time
+          <input name="time" type="text" required placeholder="1:06.50" inputmode="decimal">
+        </label>
+        <label>Date of run
+          <input name="date" type="date" required>
+        </label>
+      </div>
+
+      <label>Video link (YouTube etc.)
+        <input name="video" type="url" required placeholder="https://www.youtube.com/watch?v=...">
+      </label>
+
+      <label>Notes (optional)
+        <textarea name="notes" rows="2" maxlength="300" placeholder="Beer brand, cube model, anything we should know"></textarea>
+      </label>
+
+      <!-- Honeypot field against spam bots: humans never see it -->
+      <label class="hp" aria-hidden="true">Leave this empty
+        <input name="website" type="text" tabindex="-1" autocomplete="off">
+      </label>
+
+      <label class="check">
+        <input name="confirm" type="checkbox" required>
+        <span>I am 18 or older and my video shows the whole run without cuts.</span>
+      </label>
+
+      <p id="form-status" class="status" role="status"></p>
+
+      <div class="actions">
+        <button type="button" id="close-submit" class="btn">Cancel</button>
+        <button type="submit" class="btn btn-primary">Send run</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="config.js"></script>
+  <script src="runs.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
